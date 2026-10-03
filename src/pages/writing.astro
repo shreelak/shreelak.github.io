@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageTitle from '../components/PageTitle.astro';
+import EmailLink from '../components/EmailLink.astro';
+
+const published = [
+  {
+    kind: 'Blog',
+    year: '2024',
+    title: 'AI-powered patient profiles using AWS HealthLake and Amazon Bedrock',
+    where: 'AWS Industries Blog',
+    href: 'https://aws.amazon.com/blogs/industries/ai-powered-patient-profiles-using-aws-healthlake-and-amazon-bedrock/',
+  },
+  {
+    kind: 'Article',
+    year: '2025',
+    title: 'From AI Prototype to Production: A Practical Guide from the Trenches',
+    where: 'LinkedIn',
+    href: 'https://www.linkedin.com/pulse/from-ai-prototype-production-practical-guide-trenches-krishnamurthi-ixavc',
+  },
+  {
+    kind: 'Article',
+    year: '2024',
+    title: 'Prototyping for Customer-Centric Innovation: Lessons from Working Backwards and Design Thinking',
+    where: 'LinkedIn',
+    href: 'https://www.linkedin.com/pulse/prototyping-customer-centric-innovation-lessons-from-krishnamurthi-gblvc',
+  },
+  {
+    kind: 'Code',
+    year: '2025',
+    title: 'Healthcare voice agent, open-source sample',
+    where: 'GitHub · aws-samples',
+    href: 'https://github.com/aws-samples/sample-Nova-Sonic-AgentCore-Healthcare-Call-Center',
+  },
+  {
+    kind: 'Talk',
+    year: '2025',
+    title: 'Cloud sustainability',
+    where: 'YouTube',
+    href: 'https://www.youtube.com/watch?v=KVTYoGw4u3c',
+  },
+  {
+    kind: 'Interview',
+    year: '2026',
+    title: 'The question nobody asks before building',
+    where: 'AWS Tech Bites',
+    href: 'https://www.youtube.com/watch?v=lDnM_-qFzao',
+  },
+  {
+    kind: 'Interview',
+    year: '2026',
+    title: 'The most underrated skill in prototyping',
+    where: 'AWS Tech Bites',
+    href: 'https://www.youtube.com/watch?v=XHUGlJbVZX8',
+  },
+];
+
+---
+<BaseLayout title="Writing & Talks — Shree Krishnamurthi" path="/writing">
+  <PageTitle
+    label="Writing"
+    title="Words and workshops."
+    lede="A short shelf of things I have written and taught. Not a blog. If I have anything new to say, it will land somewhere on this page."
+  />
+
+  <div class="container">
+
+    <section class="stack">
+      <p class="eyebrow">Published</p>
+      <ul class="stack__list">
+        {published.map((p) => (
+          <li class="entry">
+            <a class="entry__link" href={p.href} rel="noopener">
+              <span class="entry__kind">{p.kind}</span>
+              <span class="entry__year">{p.year}</span>
+              <span class="entry__title">{p.title}</span>
+              <span class="entry__where">{p.where}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="stack">
+      <p class="eyebrow">Teaching</p>
+      <div class="teaching">
+        <p>
+          A fair amount of my work is helping other people get good at this rather than doing it myself. I co-built a hands-on workshop on building AI agents and have taught it to engineers across a lot of offices. I run a standing technical knowledge-sharing series inside my organization, so people have a regular place to teach each other whatever they have just figured out. I run working-backwards sessions with executive teams who know they want to use AI and are trying to work out where to start. And I facilitate build events where teams get from an idea to something actually running inside a day.
+        </p>
+        <p>
+          Almost none of that is on the internet, which is the nature of work done inside a company. If any of it is relevant to what you are trying to do, <EmailLink variant="inline" label="get in touch" /> and I will tell you about it properly.
+        </p>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .stack { padding-top: var(--space-7); padding-bottom: var(--space-4); }
+  .stack + .stack { border-top: var(--rule); }
+
+  .stack__list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0 0;
+  }
+  .entry {
+    border-bottom: 1px solid rgba(68, 96, 78, 0.25);
+  }
+  .entry:first-child {
+    border-top: 1px solid rgba(68, 96, 78, 0.25);
+  }
+  .entry__link {
+    display: grid;
+    grid-template-columns: 5rem 4rem 1fr;
+    grid-template-areas:
+      "kind year title"
+      ".    .    where";
+    column-gap: var(--space-4);
+    padding: var(--space-4) 0;
+    text-decoration: none;
+    color: var(--soil);
+    align-items: baseline;
+    transition: color 120ms ease;
+  }
+  .entry__link:hover {
+    color: var(--chicory);
+  }
+  .entry__kind {
+    grid-area: kind;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--kale);
+  }
+  .entry__year {
+    grid-area: year;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--kale-soft);
+  }
+  .entry__title {
+    grid-area: title;
+    font-family: var(--display);
+    font-size: var(--step-1);
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  .entry__where {
+    grid-area: where;
+    font-family: var(--body);
+    font-style: italic;
+    color: var(--kale);
+    font-size: var(--step--1);
+    margin-top: var(--space-2);
+  }
+
+  @media (max-width: 40rem) {
+    .entry__link {
+      grid-template-columns: 5rem 1fr;
+      grid-template-areas:
+        "kind title"
+        "year title"
+        ".    where";
+    }
+    .entry__year { margin-top: -0.25rem; }
+  }
+
+  .teaching {
+    margin-top: var(--space-5);
+    max-width: 46rem;
+  }
+  .teaching p {
+    line-height: 1.6;
+  }
+
+  .talks {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-5) 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+  .talk {
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--kale);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  .talk__fig {
+    font-family: var(--display);
+    font-size: var(--step-3);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--soil);
+  }
+  .talk__unit {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--kale);
+    margin-bottom: var(--space-2);
+  }
+  .talk__body {
+    max-width: 34ch;
+    color: var(--soil);
+  }
+
+  @media (max-width: 44rem) {
+    .talks { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,108 @@
+---
+import NameMark from './NameMark.astro';
+import EmailLink from './EmailLink.astro';
+
+interface Props {
+  current: string;
+}
+const { current } = Astro.props;
+
+const items = [
+  { href: '/', label: 'Home', match: '/' },
+  { href: '/work/', label: 'Work', match: '/work' },
+  { href: '/roots/', label: 'Roots', match: '/roots' },
+  { href: '/writing/', label: 'Writing', match: '/writing' },
+];
+
+function isCurrent(match: string) {
+  if (match === '/') return current === '/';
+  return current.startsWith(match);
+}
+---
+<header class="nav">
+  <div class="container nav__inner">
+    <div class="nav__identity">
+      <a href="/" class="nav__mark" aria-label="ShreeLakshmi Krishnamurthi, home">
+        <NameMark size="nav" />
+      </a>
+      <EmailLink />
+    </div>
+    <nav aria-label="Primary">
+      <ul class="nav__list">
+        {items.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`nav__link${isCurrent(item.match) ? ' is-current' : ''}`}
+              aria-current={isCurrent(item.match) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    border-bottom: var(--rule);
+    background: var(--paper);
+  }
+  .nav__inner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+    gap: var(--space-5);
+  }
+  .nav__identity {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-width: 0;
+  }
+  .nav__mark {
+    text-decoration: none;
+    line-height: 1.1;
+    display: inline-block;
+  }
+  .nav__mark:hover :global(.namemark__given),
+  .nav__mark:hover :global(.namemark__rest) {
+    color: var(--chicory);
+  }
+
+  .nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+  .nav__link {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--soil);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+  }
+  .nav__link:hover {
+    color: var(--chicory);
+    border-bottom-color: var(--chicory);
+  }
+  .nav__link.is-current {
+    color: var(--chicory);
+    border-bottom-color: var(--chicory);
+  }
+
+  @media (max-width: 32rem) {
+    .nav__list { gap: var(--space-4); }
+    .nav__link { font-size: 0.7rem; }
+  }
+</style>

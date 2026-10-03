@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets';
+import headshot from '../assets/headshot.jpg';
+---
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <p class="eyebrow">Mountain View, California</p>
+      <h1 class="hero__title">
+        <span class="hero__title-l1">I help companies turn AI ideas</span>
+        <span class="hero__title-l2">into products people actually use.</span>
+        <span class="hero__title-tail">On Saturday mornings I grow food with my neighbors.</span>
+      </h1>
+    </div>
+    <div class="hero__portrait">
+      <Image
+        src={headshot}
+        alt="Portrait of Shree Krishnamurthi"
+        widths={[240, 360, 480]}
+        sizes="(max-width: 40rem) 40vw, 240px"
+        formats={['webp']}
+        quality={80}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: var(--space-7);
+    align-items: end;
+  }
+  .hero__title {
+    font-family: var(--display);
+    font-size: var(--step-5);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+    margin: 0;
+  }
+  .hero__title-l1,
+  .hero__title-l2 {
+    display: block;
+    color: var(--soil);
+  }
+  .hero__title-l2 {
+    color: var(--kale);
+  }
+  .hero__title-tail {
+    display: block;
+    margin-top: var(--space-4);
+    font-family: var(--body);
+    font-size: var(--step-1);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0;
+    color: var(--soil);
+    max-width: 34ch;
+  }
+  .hero__portrait {
+    width: 200px;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    filter: grayscale(0.15) contrast(0.98);
+    align-self: end;
+  }
+  .hero__portrait :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+  }
+
+  @media (max-width: 48rem) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+      row-gap: var(--space-5);
+    }
+    .hero__portrait {
+      width: 160px;
+      order: -1;
+    }
+    .hero {
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-6);
+    }
+  }
+</style>

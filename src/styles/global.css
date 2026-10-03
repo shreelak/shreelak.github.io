@@ -1,0 +1,214 @@
+@import './tokens.css';
+
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/newsreader';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--soil);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  font-weight: 380;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+h1 { font-size: var(--step-5); }
+h2 { font-size: var(--step-4); }
+h3 { font-size: var(--step-2); font-weight: 550; }
+h4 { font-size: var(--step-1); font-weight: 550; line-height: 1.2; }
+
+p {
+  margin: 0 0 var(--space-4);
+  max-width: var(--measure);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--chicory);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 120ms ease;
+}
+
+a:hover {
+  color: var(--chicory-hover);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--chicory);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+blockquote {
+  margin: var(--space-5) 0;
+  padding-left: var(--space-5);
+  border-left: 3px solid var(--kale);
+  font-style: italic;
+  color: var(--kale);
+  max-width: var(--measure);
+}
+
+blockquote p {
+  color: var(--kale);
+}
+
+hr {
+  border: 0;
+  border-top: var(--rule);
+  margin: var(--space-8) 0;
+}
+
+ul {
+  padding-left: 1.1em;
+  margin: 0 0 var(--space-4);
+  max-width: var(--measure);
+}
+
+ul li {
+  margin-bottom: var(--space-2);
+}
+
+ul li::marker {
+  color: var(--kale);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.narrow {
+  max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The signature: staked marker heading. A mono label with a
+   short vertical rule dropping beneath it. Every section
+   is planted by one of these. */
+.marker {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-5);
+  align-items: start;
+  margin-bottom: var(--space-6);
+}
+
+.marker::before {
+  content: '';
+  display: block;
+  width: 1px;
+  min-height: 3.5rem;
+  background: var(--kale);
+  margin-top: 0.35rem;
+  margin-left: 0.15rem;
+}
+
+.marker__label {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kale);
+  padding-right: var(--space-4);
+  border-right: 1px solid var(--kale);
+  white-space: nowrap;
+  align-self: start;
+}
+
+.marker__label + * {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.marker::before {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: end;
+  margin-right: calc(var(--space-4) - 0.5px);
+}
+
+/* Utility */
+.mono {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kale);
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kale);
+  margin-bottom: var(--space-3);
+}
+
+/* Skip link, always available for keyboard users */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: var(--space-4);
+  top: var(--space-4);
+  background: var(--soil);
+  color: var(--paper);
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  z-index: 100;
+}

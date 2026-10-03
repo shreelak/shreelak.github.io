@@ -1,0 +1,72 @@
+---
+interface Props {
+  n: string;
+  title: string;
+  meta?: string;
+}
+const { n, title, meta } = Astro.props;
+---
+<article class="case">
+  <div class="case__head">
+    <span class="case__n">{n}</span>
+    <h3 class="case__title">{title}</h3>
+    {meta && <span class="case__meta">{meta}</span>}
+  </div>
+  <div class="case__body">
+    <slot />
+  </div>
+</article>
+
+<style>
+  .case {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    column-gap: var(--space-6);
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-top: 1px solid var(--kale);
+  }
+  .case:first-child { border-top: none; padding-top: var(--space-4); }
+
+  .case__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .case__n {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--kale);
+  }
+  .case__title {
+    font-family: var(--display);
+    font-size: var(--step-2);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 14ch;
+    color: var(--soil);
+  }
+  .case__meta {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--kale-soft);
+    margin-top: var(--space-2);
+  }
+  .case__body {
+    max-width: 42rem;
+  }
+  .case__body :global(p:first-child) { margin-top: 0; }
+
+  @media (max-width: 48rem) {
+    .case {
+      grid-template-columns: 1fr;
+      row-gap: var(--space-3);
+    }
+    .case__title { max-width: none; }
+  }
+</style>

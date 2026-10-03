@@ -1,0 +1,180 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageTitle from '../components/PageTitle.astro';
+import SectionMarker from '../components/SectionMarker.astro';
+import garden from '../assets/garden.jpg';
+import canyon from '../assets/canyon.jpg';
+---
+<BaseLayout title="Roots — Shree Krishnamurthi" path="/roots">
+  <PageTitle
+    label="Roots"
+    title="Growing things. Food, people, and organizations."
+    lede="I get my energy from planting. A week of screens and decisions resets itself when I am working the soil."
+  />
+
+  <div class="container">
+
+    <section class="opening">
+      <p>
+        A week of screens and decisions resets itself when I am out working the soil on a Saturday morning. That is not a side effect. It is most of the reason I keep showing up.
+      </p>
+      <p>
+        The garden is a nonprofit and the community part matters to me, but I would be overstating it to call this only service. I get at least as much back as I put in. There is a particular kind of quiet in giving your time to something living, on its schedule rather than yours, and in working alongside people who turned up for the same reason. Learning to grow something is learning to nurture it.
+      </p>
+    </section>
+
+    <SectionMarker id="soilwater" label="I. Soil & Water Garden" heading="A community garden in Mountain View.">
+      <p class="mono role">Cofounder · treasurer · board member since inception</p>
+      <p>
+        A nonprofit community garden with one purpose: help people grow their own food. It started in a neighbor's backyard. In December 2016 the city gave us land at Heritage Park, and we have been there ever since, now in our ninth season.
+      </p>
+      <p>
+        Saturday morning volunteer workdays. Planting February through May, harvest through summer, fall crop prep. Monthly events for kids, cooking and nutrition demos, and a harvest festival at the end of summer. Volunteers take produce home. Teenagers earn community service hours. It runs as a program under the Los Altos Mountain View Community Foundation's local impact collective.
+      </p>
+      <p>
+        I am proud to have been part of the team that started it. I have served as its treasurer and a board member since the beginning.
+      </p>
+      <p class="linkline">
+        <a href="https://www.soilandwatergarden.org/" rel="noopener">soilandwatergarden.org →</a>
+      </p>
+
+      <figure class="figure">
+        <Image
+          src={garden}
+          alt="Two people tend raised beds at the community garden. Peas climb a trellis in the background. Hand-lettered signs mark tomato and radish beds."
+          widths={[720, 1080, 1440]}
+          sizes="(max-width: 60rem) 100vw, 900px"
+          formats={['webp']}
+          quality={80}
+        />
+        <figcaption>Saturday morning at the garden.</figcaption>
+      </figure>
+    </SectionMarker>
+
+    <SectionMarker id="veggielution" label="II. Veggielution" heading="An urban farm in East San José.">
+      <p class="mono role">Long-time volunteer since 2008 · former board member</p>
+      <p>
+        On King Road, in neighborhoods that have lived through generations of disinvestment and shrinking access to green space and fresh food. It grows and distributes produce, runs a farm stand, cooking classes, gardening workshops, student field trips, leadership training for community members, and a neighborhood renaturing project.
+      </p>
+      <p>
+        I showed up as a volunteer in 2008 and kept showing up. I served as a board member later.
+      </p>
+      <p class="linkline">
+        <a href="https://veggielution.org/" rel="noopener">veggielution.org →</a>
+      </p>
+    </SectionMarker>
+
+    <SectionMarker id="sustainability" label="III. Sustainability" heading="Advising on cloud sustainability.">
+      <p>
+        Active member of an environmental sustainability technical community, advising enterprise companies on cloud sustainability. Voluntary, out of personal interest, not part of my day job. Contributed to the methodology and new features in a cloud carbon footprint tool across two versions. Ran a hands-on AI workshop for the community's hackathon. Member of the Responsible AI Institute.
+      </p>
+      <p class="linkline">
+        <a href="https://www.youtube.com/watch?v=KVTYoGw4u3c" rel="noopener">Talk on cloud sustainability →</a>
+      </p>
+    </SectionMarker>
+
+  </div>
+
+  <div class="canyon">
+    <Image
+      src={canyon}
+      alt="A person in a bright pink shirt with a long braid sits at the edge of a sandstone canyon, looking out at layered rock walls in the distance."
+      widths={[960, 1440, 1920]}
+      sizes="100vw"
+      formats={['webp']}
+      quality={78}
+    />
+  </div>
+
+  <div class="container">
+    <SectionMarker id="mentoring" label="IV. Mentoring" heading="The way back in.">
+      <blockquote class="essay">
+        <p>
+          I stepped away from tech in 2016. I spent those years on my family, and I built a small food business from nothing. When I was ready to come back, I found out how hard it is to get into a technical role after a break. The gap on the résumé does most of the talking, and not in your favor. I found a path. Since then I have made a point of helping other people find theirs.
+        </p>
+      </blockquote>
+
+      <p>
+        Most of it is unglamorous and that is fine. I have walked people through the same return I made, from a break back into a technical role, which is the kind of help I would have wanted at the time. I coach people early in their careers on how to grow, and new hires through the first months when everything is still unfamiliar. I have mentored intern cohorts over several summers and served as a mentor in a returnship program.
+      </p>
+      <p>
+        I also started an ambassador group for technical program managers across my part of the company. It runs talks, in-person meetups, and a coffee-chat program that pairs people up for the career conversations that are hard to ask for directly. I help choose speakers for an internal conference serving the same community. And I spend time in front of middle schoolers and at career fairs, talking about cloud technology and what a career in tech actually looks like from the inside.
+      </p>
+    </SectionMarker>
+  </div>
+
+</BaseLayout>
+
+<style>
+  .opening {
+    padding-top: var(--space-7);
+    max-width: 46rem;
+  }
+  .opening p {
+    font-size: var(--step-1);
+    line-height: 1.55;
+  }
+
+  .role {
+    color: var(--kale);
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+
+  .linkline {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--chicory);
+    margin-top: var(--space-4);
+  }
+  .linkline a { color: var(--chicory); }
+
+  .figure {
+    margin: var(--space-6) 0 0;
+    max-width: 44rem;
+  }
+  .figure :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .figure figcaption {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--kale);
+    margin-top: var(--space-3);
+  }
+
+  .canyon {
+    margin: var(--space-8) 0;
+    max-height: 60vh;
+    overflow: hidden;
+  }
+  .canyon :global(img) {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: contrast(0.98);
+  }
+
+  .essay {
+    margin: 0 0 var(--space-5);
+    font-size: var(--step-1);
+    font-style: italic;
+    max-width: 46rem;
+  }
+
+  .mentor__list {
+    max-width: 46rem;
+    padding-left: 1.2em;
+    font-family: var(--body);
+  }
+  .mentor__list li {
+    margin-bottom: var(--space-3);
+    padding-left: var(--space-2);
+  }
+</style>

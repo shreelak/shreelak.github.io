@@ -1,0 +1,76 @@
+---
+interface Props {
+  label: string;
+  heading?: string;
+  id?: string;
+  level?: 2 | 3;
+}
+const { label, heading, id, level = 2 } = Astro.props;
+---
+<section class="section" id={id}>
+  <span class="section__label">{label}</span>
+  <div class="section__body">
+    {heading && level === 2 && <h2 class="section__heading">{heading}</h2>}
+    {heading && level === 3 && <h3 class="section__heading">{heading}</h3>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    column-gap: var(--space-6);
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-7);
+    border-top: var(--rule);
+    position: relative;
+  }
+
+  .section__label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--kale);
+    padding-top: 0.35rem;
+    position: relative;
+  }
+
+  /* The stake: short vertical rule dropping from the label */
+  .section__label::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2rem;
+    bottom: -0.5rem;
+    width: 1px;
+    background: var(--kale);
+    opacity: 0.4;
+    max-height: 3rem;
+  }
+
+  .section__heading {
+    max-width: 22ch;
+    margin-bottom: var(--space-5);
+    font-weight: 500;
+  }
+
+  .section__body > *:first-child:not(.section__heading) {
+    margin-top: 0;
+  }
+
+  @media (max-width: 48rem) {
+    .section {
+      grid-template-columns: 1fr;
+      row-gap: var(--space-4);
+    }
+    .section__label::after {
+      display: none;
+    }
+    .section__label {
+      padding-top: 0;
+    }
+  }
+</style>

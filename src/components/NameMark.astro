@@ -1,0 +1,45 @@
+---
+// Full legal name, with the part people actually call her emphasized
+// inside it. Used in the nav and the footer so the treatment stays
+// identical in both places.
+interface Props {
+  size?: 'nav' | 'footer';
+}
+const { size = 'nav' } = Astro.props;
+---
+<span class={`namemark namemark--${size}`}>
+  <span class="namemark__given">Shree</span><span class="namemark__rest">Lakshmi Krishnamurthi</span>
+</span>
+
+<style>
+  .namemark {
+    font-family: var(--display);
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+  }
+  .namemark__given {
+    font-weight: 650;
+    color: var(--soil);
+  }
+  .namemark__rest {
+    font-weight: 380;
+    color: var(--kale-soft);
+  }
+
+  .namemark--nav {
+    font-size: 1.05rem;
+  }
+  .namemark--footer {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 34rem) {
+    .namemark--nav {
+      font-size: 0.9rem;
+    }
+    /* Keep the name whole but let it wrap rather than overflow */
+    .namemark--nav {
+      white-space: normal;
+    }
+  }
+</style>

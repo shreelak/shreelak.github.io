@@ -1,0 +1,49 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  lede?: string;
+}
+const { label, title, lede } = Astro.props;
+---
+<header class="pt">
+  <div class="container">
+    <p class="pt__label">{label}</p>
+    <h1 class="pt__title">{title}</h1>
+    {lede && <p class="pt__lede">{lede}</p>}
+  </div>
+</header>
+
+<style>
+  .pt {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-6);
+    border-bottom: var(--rule);
+  }
+  .pt__label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--kale);
+    margin: 0 0 var(--space-4);
+  }
+  .pt__title {
+    font-size: var(--step-5);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    max-width: 18ch;
+    margin: 0 0 var(--space-5);
+  }
+  .pt__lede {
+    font-family: var(--body);
+    font-size: var(--step-2);
+    line-height: 1.4;
+    color: var(--kale);
+    max-width: 45ch;
+    font-style: italic;
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,45 @@
+/* Tokens — one place to change the whole system. */
+
+:root {
+  /* Color. Sampled from the overcast light in the community garden photo. */
+  --paper: #E9ECE7;
+  --paper-tint: #DDE1DA;
+  --soil: #23271F;
+  --kale: #44604E;
+  --kale-soft: #6B8674;
+  --chicory: #2F5FD0;
+  --chicory-hover: #1F4CB8;
+  --radish: #C0405C;
+
+  /* Type. Bricolage display, Newsreader body, IBM Plex Mono utility. */
+  --display: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+  --body: 'Newsreader Variable', Georgia, serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Type scale. Fluid between narrow and wide viewports. */
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1:  clamp(1.2rem, 1.13rem + 0.35vw, 1.4rem);
+  --step-2:  clamp(1.44rem, 1.33rem + 0.55vw, 1.75rem);
+  --step-3:  clamp(1.75rem, 1.55rem + 1vw, 2.35rem);
+  --step-4:  clamp(2.1rem, 1.7rem + 2vw, 3.2rem);
+  --step-5:  clamp(2.75rem, 2rem + 3.75vw, 5rem);
+
+  /* Space. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6.5rem;
+
+  /* Layout. Comfortable reading measure. */
+  --measure: 62ch;
+  --wide: 78rem;
+
+  /* Rule weight. Hairline. */
+  --rule: 1px solid var(--kale);
+}

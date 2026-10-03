@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Pillars from '../components/Pillars.astro';
+import Proof from '../components/Proof.astro';
+import RootsTeaser from '../components/RootsTeaser.astro';
+---
+<BaseLayout title="Shree Krishnamurthi — engineering, product, urban farming" path="/">
+  <Hero />
+
+  <section class="intro">
+    <div class="container">
+      <div class="intro__grid">
+        <p class="eyebrow">The short version</p>
+        <div class="intro__body">
+          <p>
+            I have spent about twenty five years taking things from zero to one. I was part of the founding engineering team on a physical security platform that grew into an enterprise product and got acquired. I left tech to build a food brand from nothing and got it to profitability in a year. Now I sit across the table from CTOs and product leaders, work backwards from their hardest problem, and get working AI in front of their customers in weeks instead of quarters.
+          </p>
+          <p>
+            What we build is rarely the point. The point is to start a company's AI program, or to speed up one that has stalled, and to leave their engineers able to carry it themselves. One of those builds went further than that and became a feature inside an AWS service.
+          </p>
+          <p>
+            I also helped start a community garden in Mountain View, where we teach people to grow their own food.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Pillars />
+  <Proof />
+  <RootsTeaser />
+</BaseLayout>
+
+<style>
+  .intro {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-8);
+  }
+  .intro__grid {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    column-gap: var(--space-6);
+  }
+  .intro__body {
+    max-width: 42rem;
+  }
+  .intro__body p {
+    font-size: var(--step-1);
+    line-height: 1.55;
+  }
+  @media (max-width: 48rem) {
+    .intro__grid { grid-template-columns: 1fr; row-gap: var(--space-3); }
+  }
+</style>

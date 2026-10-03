@@ -1,0 +1,114 @@
+---
+const pillars = [
+  {
+    n: 'i',
+    key: 'Engineering',
+    body: '19 years writing and leading software. Part of the founding engineering team on an enterprise security platform that got acquired.',
+    href: '/work/#engineering',
+  },
+  {
+    n: 'ii',
+    key: 'Product',
+    body: 'Deciding where AI belongs before building it, then building the thing that starts or accelerates a company’s AI program.',
+    href: '/work/#judgment',
+  },
+  {
+    n: 'iii',
+    key: 'Commercial',
+    body: 'Executive discovery, competitive wins against other clouds, and demos that moved deals.',
+    href: '/work/#commercial',
+  },
+];
+---
+<section class="pillars">
+  <div class="container">
+    <ol class="pillars__grid">
+      {pillars.map((p) => (
+        <li class="pillar">
+          <span class="pillar__n">{p.n}.</span>
+          <h2 class="pillar__key"><a href={p.href}>{p.key}</a></h2>
+          <p class="pillar__body">{p.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .pillars {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-top: var(--rule);
+    border-bottom: var(--rule);
+  }
+  .pillars__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .pillar {
+    padding: var(--space-6) var(--space-5);
+    border-right: var(--rule);
+    position: relative;
+  }
+  .pillar:last-child {
+    border-right: none;
+  }
+  .pillar:first-child {
+    padding-left: 0;
+  }
+  .pillar:last-child {
+    padding-right: 0;
+  }
+  .pillar__n {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--kale);
+    display: block;
+    margin-bottom: var(--space-3);
+  }
+  .pillar__key {
+    font-size: var(--step-2);
+    font-weight: 500;
+    margin-bottom: var(--space-3);
+  }
+  .pillar__key a {
+    color: var(--soil);
+    text-decoration: none;
+    background-image: linear-gradient(to right, var(--chicory), var(--chicory));
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 2px;
+    transition: background-size 200ms ease, color 120ms ease;
+  }
+  .pillar__key a:hover {
+    color: var(--chicory);
+    background-size: 100% 1px;
+  }
+  .pillar__body {
+    font-family: var(--body);
+    color: var(--kale);
+    max-width: 30ch;
+    margin: 0;
+  }
+
+  @media (max-width: 56rem) {
+    .pillars__grid {
+      grid-template-columns: 1fr;
+    }
+    .pillar {
+      padding: var(--space-5) 0;
+      border-right: none;
+      border-bottom: var(--rule);
+    }
+    .pillar:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

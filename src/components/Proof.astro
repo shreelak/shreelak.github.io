@@ -1,0 +1,76 @@
+---
+const items = [
+  { fig: '60+',    unit: 'engagements', body: 'AI programs started or accelerated, from idea to working software.' },
+  { fig: 'seven',  unit: 'industries',  body: 'Data and storage, food, health, recruiting, media, education, hospitality.' },
+  { fig: 'weeks',  unit: 'not quarters', body: 'How long it takes to get something real in front of a customer’s users.' },
+  { fig: '5 days', unit: 'vs 7 weeks',  body: 'On one build the customer had estimated at seven weeks.' },
+  { fig: '950+',   unit: 'taught',      body: 'Engineers and architects, across 13 cities.' },
+  { fig: 'one',    unit: 'became an AWS feature', body: 'Built for one customer, then picked up by the service team and shipped inside their own product.' },
+];
+---
+<section class="proof">
+  <div class="container">
+    <p class="eyebrow">Field notes</p>
+    <ul class="proof__grid">
+      {items.map((item) => (
+        <li class="proof__item">
+          <span class="proof__fig">{item.fig}</span>
+          <span class="proof__unit">{item.unit}</span>
+          <span class="proof__body">{item.body}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .proof {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-6);
+  }
+  .proof__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: var(--space-6);
+    row-gap: var(--space-6);
+  }
+  .proof__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--kale);
+  }
+  .proof__fig {
+    font-family: var(--display);
+    font-size: var(--step-4);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--soil);
+    letter-spacing: -0.02em;
+  }
+  .proof__unit {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--kale);
+    margin-bottom: var(--space-2);
+  }
+  .proof__body {
+    font-family: var(--body);
+    color: var(--soil);
+    line-height: 1.4;
+    max-width: 28ch;
+  }
+
+  @media (max-width: 48rem) {
+    .proof__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 28rem) {
+    .proof__grid { grid-template-columns: 1fr; }
+  }
+</style>

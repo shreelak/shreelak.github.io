@@ -1,0 +1,90 @@
+---
+import { site } from '../site.config';
+
+interface Props {
+  variant?: 'icon' | 'text' | 'inline';
+  label?: string;
+}
+const { variant = 'icon', label = 'get in touch' } = Astro.props;
+const { email } = site;
+
+// Encode as HTML numeric entities so the address never appears as plain
+// text in the source. Browsers decode entities inside attribute values,
+// so the mailto works with no JavaScript. This has to be emitted as raw
+// HTML because Astro escapes ampersands in attribute values, which would
+// turn the entities into literal text and break the link.
+// Not real protection against a determined harvester. A cheap filter
+// against the lazy majority.
+const encoded = email
+  ? [...`mailto:${email}`].map((c) => `&#${c.codePointAt(0)};`).join('')
+  : null;
+
+const ICON = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.75" y="5.25" width="18.5" height="13.5" rx="1.5"/><path d="M3.25 6.25 L12 12.9 L20.75 6.25"/></svg>`;
+
+let html: string | null = null;
+if (encoded) {
+  if (variant === 'icon') {
+    html = `<a class="email email--icon" href="${encoded}" aria-label="Email me" title="Send me an email">${ICON}</a>`;
+  } else if (variant === 'text') {
+    html = `<a class="email email--text" href="${encoded}" rel="me">Email</a>`;
+  } else {
+    html = `<a class="email email--inline" href="${encoded}" rel="me">${label}</a>`;
+  }
+}
+---
+{html && <span class={`email-wrap email-wrap--${variant}`} set:html={html} />}
+
+<style>
+  .email-wrap {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .email-wrap :global(.email--icon) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    color: var(--kale);
+    text-decoration: none;
+    border: 1px solid var(--kale-soft);
+    border-radius: 50%;
+    transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease;
+    flex: none;
+  }
+  .email-wrap :global(.email--icon:hover) {
+    color: var(--paper);
+    background: var(--chicory);
+    border-color: var(--chicory);
+  }
+  .email-wrap :global(.email--icon:focus-visible) {
+    outline: 2px solid var(--chicory);
+    outline-offset: 2px;
+  }
+  .email-wrap :global(.email--icon svg) {
+    width: 0.95rem;
+    height: 0.95rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .email-wrap :global(.email--text) {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Inline inside a sentence, so it must not disturb the line box. */
+  .email-wrap--inline {
+    display: inline;
+  }
+  .email-wrap :global(.email--inline) {
+    font: inherit;
+    color: var(--chicory);
+  }
+</style>

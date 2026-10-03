@@ -1,0 +1,360 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageTitle from '../components/PageTitle.astro';
+import SectionMarker from '../components/SectionMarker.astro';
+import Case from '../components/Case.astro';
+---
+<BaseLayout title="Work — Shree Krishnamurthi" path="/work">
+  <PageTitle
+    label="Work"
+    title="Twenty five years of taking things from zero to one."
+    lede="Engineering, product, and commercial. In that order, because that is how it happened."
+  />
+
+  <div class="container">
+
+    <SectionMarker id="judgment" label="I. Judgment" heading="Knowing where AI belongs, and where it does not.">
+      <p>
+        The hard part of this work is not building. It is deciding what deserves to be built.
+      </p>
+      <p>
+        Most teams arrive with a technology they want to use and a hope that it will find a problem. My job early on is to slow that down. Sometimes the answer is that AI is the wrong tool, and saying so in week one is worth more than a demo in week six. I have talked teams out of training their own model when a foundation model would do, and talked others out of building anything at all when the real problem was a process nobody owned.
+      </p>
+      <p>
+        Over time this has settled into the same set of questions, asked in roughly this order.
+      </p>
+
+      <div class="judgment__patterns">
+        <h4>What I ask before we build</h4>
+        <dl class="pattern">
+          <dt>Is this an AI problem at all?</dt>
+          <dd>Plenty of problems are deterministic. If the rules are known and stable, write the rules. If a heuristic has been good enough for ten years, a model is a liability with extra steps. AI earns its place when the input is genuinely messy, when the rules will not hold still, and when being approximately right across many cases beats being exactly right on a few.</dd>
+
+          <dt>Does it fix a real pain, and can someone name the number it moves?</dt>
+          <dd>Adding AI for the sake of innovation produces features nobody uses and a line item nobody can defend. I want a metric the business already tracks and a credible story for how this shifts it. If nobody can name that number, that is the finding, and it is more useful than a demo. Technology for its own sake is not a strategy.</dd>
+
+          <dt>What does a wrong answer cost, and who catches it?</dt>
+          <dd>This is the question teams skip, and it decides whether the thing survives contact with real customers. A model that is confidently wrong in front of a user does more damage than shipping nothing at all. So the guardrails, the governance, and the human in the loop get designed in at the start rather than retrofitted after the first bad output. The higher the cost of being wrong, the more review the design has to carry, and that review belongs inside the business case, not beside it.</dd>
+
+          <dt>Is it responsible on every dimension, not just the convenient ones?</dt>
+          <dd>Responsible AI gets treated as a compliance box to tick, or as the one dimension a team already happens to care about. It is not one thing. Fairness, explainability, privacy and security, safety, controllability, veracity and robustness, governance, and transparency are all load bearing, and a system can hold up on seven of them and still fail the person using it. A model that is accurate but cannot show its reasoning will not be adopted anywhere regulated. One that explains itself beautifully but leaks what it was trained on is worse than having shipped nothing. So early on I want to know which of these dimensions this particular use case is most exposed on, and design for that from the start, rather than discover it in a security review three weeks before launch.</dd>
+
+          <dt>Is the data ready, or are we hoping it is?</dt>
+          <dd>A team was committed to training on their own data. The data was not ready and the economics did not work. We proved the use case on a foundation model first. They shipped sooner, spent less, and kept the option to train later once they knew it was worth it.</dd>
+
+          <dt>Does it still hold at a thousand times the volume?</dt>
+          <dd>A demo that costs a fraction of a cent per call is effectively free. The same call at production volume is a budget line somebody has to approve, and the same is true of latency. I would rather find that ceiling during the build than explain it afterwards.</dd>
+
+          <dt>Who owns it after we leave?</dt>
+          <dd>Models drift, data shifts, and the person who understood the system moves teams. If nobody owns the evaluation, quality degrades quietly and nobody notices for two quarters. The outcome I want is that the customer's own engineers can carry it, which means building it in front of them rather than for them.</dd>
+
+          <dt>Who else needs this?</dt>
+          <dd>A capability that solves one team's problem is a project. One that three teams can reuse is a platform. I look for the second and third internal customer while we are still building for the first.</dd>
+        </dl>
+      </div>
+
+      <p class="breadth">
+        <span class="breadth__label">Where I have run this</span>
+        Across industries: data analytics and storage platforms, food, healthcare, recruiting, media, education, and hospitality. And on the software lifecycle itself: AI-integrated development with AI-DLC, automated code review, and test automation. The domain changes every time. The questions do not.
+      </p>
+
+      <p class="breadth">
+        <span class="breadth__label">On video</span>
+        Two short clips from an interview on this, from the AWS Tech Bites series:
+        <a href="https://www.youtube.com/watch?v=lDnM_-qFzao" rel="noopener">The question nobody asks before building</a>
+        and
+        <a href="https://www.youtube.com/watch?v=XHUGlJbVZX8" rel="noopener">the most underrated skill in prototyping</a>.
+      </p>
+    </SectionMarker>
+
+    <SectionMarker id="product" label="II. Product" heading="Taking AI from an idea to something people use.">
+      <p>
+        I start from the business problem, not the technology request. I work backwards from the person who has to live with the answer. I put something real in front of them fast, so we can find out together whether we were right.
+      </p>
+      <p>
+        The cases below are anonymized. The impact is real. Where a public artifact exists, I have linked it.
+      </p>
+
+      <div class="cases">
+        <Case n="Case 01" title="Clinical summaries that became a product feature." meta="Healthcare software · 2024–2025">
+          <p>
+            A healthcare software company's clinicians spent one to two hours a day reading patient records before appointments. We built software that pulled FHIR records together into an encounter-ready summary. Chart review went from hours to about thirty seconds.
+          </p>
+          <p>
+            The cloud provider's own service team adopted the capability and shipped it as a product feature. I co-authored the public implementation guide so other healthcare companies could build it themselves.
+          </p>
+          <p class="case__links">
+            <a href="https://aws.amazon.com/blogs/industries/ai-powered-patient-profiles-using-aws-healthlake-and-amazon-bedrock/" rel="noopener">Implementation guide on the AWS Industries Blog</a>
+            <span aria-hidden="true"> · </span>
+            <a href="https://www.aboutamazon.com/news/aws/amazon-connect-health-ai-healthcare" rel="noopener">Product feature announcement</a>
+          </p>
+        </Case>
+
+        <Case n="Case 02" title="Multi-agent incident analysis." meta="Enterprise ISV · 2025">
+          <p>
+            An infrastructure team at a large enterprise software company spent forty eight hours or more correlating logs across dozens of nodes during incidents. We built three specialized agents: one for log analysis, one for code correlation, one to orchestrate. Investigation dropped from days to minutes.
+          </p>
+          <p>
+            A new agent runtime launched one week before the final demo. We made the call to migrate the architecture mid-engagement rather than ship the older design. The team took it to production. We then refactored the code into a reusable framework that other teams used to build their own working systems in two-day workshops.
+          </p>
+        </Case>
+
+        <Case n="Case 03" title="Voice agents for healthcare scheduling." meta="Contact center · 2025">
+          <p>
+            Providers were burning staff time on manual outbound appointment calls and still seeing high no-show rates. Four weeks to a speech-to-speech agent handling patient authentication, scheduling, health questions, and escalation to a human, in three languages. It won against the stack the company was already evaluating.
+          </p>
+          <p>
+            Published as open-source sample code, so any team can start from something working.
+          </p>
+          <p class="case__links">
+            <a href="https://github.com/aws-samples/sample-Nova-Sonic-AgentCore-Healthcare-Call-Center" rel="noopener">Open-source sample on GitHub</a>
+          </p>
+        </Case>
+
+        <Case n="Case 04" title="Natural language search at scale." meta="Enterprise software · 2025–2026">
+          <p>
+            An enterprise software company wanted its customers to query very large volumes of unstructured files in plain language, with strict per-customer isolation. We built a multi-tenant agent architecture supporting three different corporate identity systems in one deployment.
+          </p>
+          <p>
+            The agent runtime only supported one at the time. We designed around the gap and filed it as a product request, which the service team picked up. The company shipped it.
+          </p>
+        </Case>
+
+        <Case n="Case 05" title="Five days instead of seven weeks." meta="Enterprise · 2025">
+          <p>
+            A large enterprise needed a planning assistant for one of its operations teams. The internal estimate was seven-plus weeks. We ran it as an AI-assisted build with the customer's own engineers and had a working feature in five days.
+          </p>
+          <blockquote>
+            <p>I was highly skeptical that we could do it in five days. I will concede defeat on that one.</p>
+            <p class="mono" style="font-style: normal;">— The executive who set the original estimate</p>
+          </blockquote>
+        </Case>
+      </div>
+
+      <p class="footnote">
+        Plus one line: work our team built on a compressed timeline was demonstrated in a major cloud provider's annual conference keynote.
+      </p>
+
+      <div class="how">
+        <h4>How I work.</h4>
+        <p>
+          <strong>Working backwards.</strong> The first artifact I build is not code. It is a paragraph that describes what the customer's customer feels when this is done. If the paragraph is not honest, nothing that comes after it is either.
+        </p>
+        <p>
+          <strong>AI-assisted development.</strong> I am a lead practitioner and champion of <a href="https://github.com/awslabs/aidlc-workflows" rel="noopener">AI-DLC</a>, the open-source AI-Driven Development Lifecycle. It guides teams from vision through requirements to tasks and code, with the AI in the loop at every phase. It is how the five-days build above happened.
+        </p>
+        <p>
+          <strong>On tools.</strong> I use Claude Code, Kiro, Cursor, and Cortex daily. Not to ship production systems. To stand up a proof of concept in the middle of a customer conversation, or to unblock a team. The point is speed and credibility, not the code.
+        </p>
+      </div>
+    </SectionMarker>
+
+    <SectionMarker id="founder" label="III. Founder" heading="I built a food brand from nothing.">
+      <p>
+        <strong>KreeA Lifestyle, 2018 to 2020.</strong> This one started by accident. I was trying to make better breakfast and snack options for my own kids, then for friends who kept asking for them. Enough people asked that I wrote a business plan, and not long after I was running a company.
+      </p>
+      <p>
+        Gluten-free breakfast and snack bars. I made the product, sold it into Bay Area grocery stores, ran farmers market stalls, sold online direct, and ran a weekly and monthly subscription. It was profitable in the first year.
+      </p>
+      <p>
+        I learned the business as I built it. Recipe, packaging, pricing, distribution, unit economics, and selling to people face to face. None of it was familiar. That was the point.
+      </p>
+    </SectionMarker>
+
+    <SectionMarker id="engineering" label="IV. Engineering" heading="Nineteen years building software.">
+      <h4>Proximex, 2006 to 2016 · founding engineering team to engineering leader</h4>
+      <p>
+        I joined early, as part of the founding engineering team, and helped build <a href="https://www.tycosecurityproducts.in/Proximex-Surveillint-detail.php" rel="noopener">Surveillint</a> from the ground up. It is a physical security information management platform. The job was to take a building's separate systems, access control, video, alarms, intrusion detection, and put them in one console so an operator saw one picture instead of six, with rules that correlated events and assigned response tasks. Event correlation across sensor feeds, built well before computer vision and AI made that fashionable.
+      </p>
+      <p>
+        I grew with it from MVP to enterprise product and ended up leading the engineering team, owning quality, releases, and technical debt. I handled escalations from support into engineering and sat in roadmap conversations with product, sales, and support. I drove the pay-as-you-go pivot that opened the mid-market, championed the cloud migration, and architected the IoT integrations. Acquired by Tyco Security Products, now part of Johnson Controls. The product still ships.
+      </p>
+
+      <h4>NetIQ, 2000 to 2005 · senior software engineer</h4>
+      <p>On AppManager, an enterprise systems monitoring platform.</p>
+
+      <h4>Ramco Systems, 1997 to 1999 · programmer analyst</h4>
+      <p>Enterprise ERP, in India. Where I learned to write software.</p>
+    </SectionMarker>
+
+    <SectionMarker id="commercial" label="V. Commercial" heading="Sitting across the table from the person who decides.">
+      <p>
+        <strong>Executive discovery.</strong> Working backwards from a business problem rather than a technology request. Certified innovation-culture speaker. Ran working-backwards sessions with the executive teams of four companies. One led directly to a major platform migration.
+      </p>
+      <p>
+        <strong>Competitive.</strong> Four engagements where what we built was the reason the company picked this cloud over another, including displacements of two other major providers.
+      </p>
+      <p>
+        <strong>Executive demos.</strong> I built a rapid demo format that worked backwards from an executive meeting or a customer's own conference, to show what was possible before anyone had committed. One made a CEO keynote. One produced seven qualified leads on the day of the customer's conference. The format later became a formal offering in the organization's portfolio.
+      </p>
+      <p>
+        <strong>Earlier, as a customer solutions manager.</strong> Grew one platform customer's usage six times on a single service and trained 94 engineers across 15 teams. I also filed product feature requests with the service teams on their behalf, several of which shipped into the product.
+      </p>
+      <p>
+        <strong>Scale.</strong> Helped turn the code from one engagement into a reusable two-day workshop delivered across dozens of companies, and created the pre-workshop discovery framework that became the standard model.
+      </p>
+    </SectionMarker>
+
+    <div class="chrono">
+      <p class="eyebrow">Chronology</p>
+      <table class="chrono__table">
+        <tbody>
+          <tr><td class="chrono__year">2022 → now</td><td>Technical Program Manager, AI and emerging technology prototyping</td><td>AWS</td></tr>
+          <tr><td class="chrono__year">2020 → 2022</td><td>Customer Solutions Manager</td><td>AWS</td></tr>
+          <tr><td class="chrono__year">2018 → 2020</td><td>Founder & CEO</td><td>KreeA Lifestyle</td></tr>
+          <tr><td class="chrono__year">2006 → 2016</td><td>Founding Developer → Engineering Lead</td><td>Proximex, acquired by Tyco Security</td></tr>
+          <tr><td class="chrono__year">2000 → 2005</td><td>Senior Software Engineer</td><td>NetIQ</td></tr>
+          <tr><td class="chrono__year">1997 → 1999</td><td>Programmer Analyst</td><td>Ramco Systems</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .cases {
+    margin-top: var(--space-6);
+  }
+
+  .judgment__patterns {
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--kale);
+    max-width: 46rem;
+  }
+  .judgment__patterns h4 {
+    margin-top: 0;
+    margin-bottom: var(--space-5);
+  }
+  .pattern {
+    margin: 0;
+  }
+  .pattern dt {
+    font-family: var(--display);
+    font-size: var(--step-0);
+    font-weight: 600;
+    color: var(--soil);
+    margin-bottom: var(--space-2);
+  }
+  .pattern dd {
+    margin: 0 0 var(--space-5);
+    padding-left: var(--space-5);
+    border-left: 2px solid var(--paper-tint);
+    color: var(--kale);
+    max-width: var(--measure);
+  }
+  .pattern dd:last-child {
+    margin-bottom: 0;
+  }
+
+  .breadth {
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: 1px dashed var(--kale-soft);
+    max-width: 46rem;
+    color: var(--soil);
+  }
+  .breadth__label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--kale);
+    margin-bottom: var(--space-2);
+  }
+  .footnote {
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: 1px dashed var(--kale-soft);
+    color: var(--kale);
+    font-style: italic;
+    max-width: 46rem;
+  }
+  .how {
+    margin-top: var(--space-7);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--kale);
+    max-width: 46rem;
+  }
+  .how h4 {
+    margin-bottom: var(--space-4);
+  }
+  .how p strong,
+  :global(section p) strong {
+    font-weight: 550;
+    color: var(--soil);
+  }
+
+  h4 {
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    font-size: var(--step-1);
+    font-weight: 550;
+  }
+  .container > :global(section:first-of-type) h4:first-of-type {
+    margin-top: var(--space-5);
+  }
+
+  .case__links {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--kale);
+    margin-top: var(--space-4);
+  }
+  .case__links a { color: var(--chicory); }
+
+  .chrono {
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: var(--rule);
+  }
+  .chrono__table {
+    width: 100%;
+    max-width: 42rem;
+    border-collapse: collapse;
+    font-family: var(--body);
+  }
+  .chrono__table td {
+    padding: var(--space-3) 0;
+    vertical-align: baseline;
+    border-bottom: 1px solid rgba(68, 96, 78, 0.2);
+  }
+  .chrono__table tr:last-child td {
+    border-bottom: none;
+  }
+  .chrono__year {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--kale);
+    white-space: nowrap;
+    padding-right: var(--space-5);
+    width: 10rem;
+  }
+  .chrono__table td:nth-child(2) {
+    font-weight: 500;
+    padding-right: var(--space-5);
+  }
+  .chrono__table td:last-child {
+    color: var(--kale);
+    font-style: italic;
+  }
+
+  @media (max-width: 40rem) {
+    .chrono__table td {
+      display: block;
+      padding: var(--space-1) 0;
+      border-bottom: none;
+    }
+    .chrono__table tr {
+      display: block;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid rgba(68, 96, 78, 0.2);
+    }
+  }
+</style>

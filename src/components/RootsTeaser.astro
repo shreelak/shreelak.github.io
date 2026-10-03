@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import garden from '../assets/garden.jpg';
+---
+<section class="teaser">
+  <div class="container teaser__inner">
+    <div class="teaser__image">
+      <Image
+        src={garden}
+        alt="Two people tending raised beds at a community garden. Peas climb a trellis in the background."
+        widths={[480, 720, 960]}
+        sizes="(max-width: 48rem) 90vw, 480px"
+        formats={['webp']}
+        quality={78}
+      />
+    </div>
+    <div class="teaser__text">
+      <p class="eyebrow">Roots</p>
+      <h2 class="teaser__title">The other body of work.</h2>
+      <p>
+        I helped start a community garden in Mountain View. I have been a volunteer at an urban farm in East San José since 2008. When I came back to tech after four years away, I found out how hard the door is to open, and I have made a point of helping other people find their way through it.
+      </p>
+      <p><a href="/roots/" class="teaser__link">Read what that looks like</a></p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .teaser {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+    background: var(--paper-tint);
+    border-top: var(--rule);
+    border-bottom: var(--rule);
+  }
+  .teaser__inner {
+    display: grid;
+    grid-template-columns: 42% 1fr;
+    column-gap: var(--space-7);
+    align-items: center;
+  }
+  .teaser__image {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    max-width: 340px;
+  }
+  .teaser__image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .teaser__title {
+    font-size: var(--step-3);
+    max-width: 14ch;
+    margin-bottom: var(--space-4);
+  }
+  .teaser__link {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 48rem) {
+    .teaser__inner { grid-template-columns: 1fr; row-gap: var(--space-5); }
+    .teaser__image { max-width: 260px; }
+  }
+</style>
