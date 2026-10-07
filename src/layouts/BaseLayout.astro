@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { site } from '../site.config';
 
 interface Props {
   title: string;
@@ -25,6 +26,27 @@ const desc = description ??
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
     <meta property="og:type" content="website" />
+    {/*
+      Analytics. Emitted only when site.goatcounter is set, so with it empty
+      the site makes zero third-party requests.
+
+      No Subresource Integrity hash here deliberately: GoatCounter updates
+      count.js in place rather than versioning the URL, so a pinned hash
+      would break tracking silently on their next release. The hardened
+      alternative is to self-host count.js and pin that copy. Not worth it
+      for a static site with no auth, no forms and nothing to steal, but
+      that is the trade being made.
+
+      The tracking pixel would avoid third-party JS entirely, but it cannot
+      record referrers or campaign tags, which is most of the value.
+    */}
+    {site.goatcounter && (
+      <script
+        data-goatcounter={`https://${site.goatcounter}.goatcounter.com/count`}
+        async
+        src="//gc.zgo.at/count.js"
+      ></script>
+    )}
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>

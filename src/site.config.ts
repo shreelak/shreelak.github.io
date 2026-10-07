@@ -8,4 +8,10 @@ export const site = {
 
   linkedin: 'https://www.linkedin.com/in/shreekrish/',
   github: 'https://github.com/shreelak',
+
+  // GoatCounter site code, the subdomain part only. If your dashboard is at
+  // https://shreelak.goatcounter.com then this is 'shreelak'.
+  // Empty means no analytics script is emitted at all, so the site ships
+  // with zero third-party requests until you deliberately turn this on.
+  goatcounter: '',
 };
